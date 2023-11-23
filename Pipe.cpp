@@ -2,10 +2,8 @@
 #include <string>
 #include "funcs.h"
 #include "variables.h"
-#include <map>
 using namespace std;
 int Pipe::id = 0;
-map<int, Pipe*> pipes;
 Pipe::Pipe()
 {
 	len = diam = isWorking = 0;
@@ -201,7 +199,7 @@ void Pipe::PipeEdit() {
                 case 1:
                     std::cout << "id труб : ";
                     for (auto& item : pipes) {
-                        cout << item.first << " ";
+                        std::cout << item.first << " ";
                     }
                     while (std::getline(cin, temp) && !temp.empty()) {
                         try {
@@ -225,7 +223,7 @@ void Pipe::PipeEdit() {
                 case 2:
                     std::cout << "id труб : ";
                     for (auto& item : pipes) {
-                        cout << item.first << " ";
+                        std::cout << item.first << " ";
                     }
                     while (std::getline(cin, temp) && !temp.empty()) {
                         try {

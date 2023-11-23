@@ -1,11 +1,10 @@
 #include "Ks.h"
 #include <string>
-#include "funcs.h"
 #include <map>
 #include "variables.h"
-map<int, Ks*> ksMap;
-int Ks::id = 0;
+#include "funcs.h"
 using namespace std;
+int Ks::id = 0;
 Ks::Ks()
 {
     amountWorkshops = amountWorkshopsNow = effectiveness = 0;
@@ -194,5 +193,4 @@ void Ks::KsEdit() {
             }
         }
     }
-}
 }

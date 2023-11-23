@@ -4,7 +4,6 @@
 #include <fstream>
 #include "Ks.h"
 #include "Pipe.h"
-#include "variables.h"
 #include "funcs.h"
 using namespace std;
 Pipe pipeManager;
@@ -41,7 +40,7 @@ int main()
             pipeManager.findTubes();
             break;
         case 4:
-            findKs(ksMap);
+            ksManager.findKs();
             break;
         case 5:
             pipeManager.PipeEdit();
