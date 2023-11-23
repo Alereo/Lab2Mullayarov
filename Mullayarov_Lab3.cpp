@@ -20,6 +20,8 @@ int main()
         std::cout << "6)Редактирование КС\n";
         std::cout << "7)Сохранить\n";
         std::cout << "8)Загрузить\n";
+        std::cout << "9)Удаление труб\n";
+        std::cout << "10)Удаление Кс\n";
         std::cout << "0)Выход\n";
         std::getline(cin, temp);
         try {
@@ -53,6 +55,12 @@ int main()
             break;
         case 8:
             load();
+            break;
+        case 9:
+            pipeManager.deletePipe();
+            break;
+        case 10:
+            ksManager.deleteKs();
             break;
         case 0:
             break;

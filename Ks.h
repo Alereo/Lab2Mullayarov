@@ -9,6 +9,7 @@ public:
 	Ks();
 	void ksInput();
 	void KsEdit();
+	void deleteKs();
 	void findKs();
 	Ks(string name, int amountWorkshops, int amountWorhshopsNow);
 	void uptadeEff();

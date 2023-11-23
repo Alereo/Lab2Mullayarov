@@ -194,3 +194,27 @@ void Ks::KsEdit() {
         }
     }
 }
+void Ks::deleteKs() {
+    std::map<int, Ks*>::iterator it;
+    std::cout << "Выберите KS для удаления (id) :" << std::endl;
+    findKs();
+    while (std::getline(cin, temp) && !temp.empty()) {
+        try {
+            answer = checkInt(temp);
+        }
+        catch (invalid_argument) {
+            std::cout << "Вводи число" << endl;
+            logfile << "Неверный формат при вводе id Ks для редактирования" << endl;
+            continue;
+        }
+        if (ksMap.find(answer) == ksMap.end()) {
+            std::cout << "Нет такого id" << endl;
+            logfile << "Ввод несуществующего id" << endl;
+            continue;
+        }
+        else {
+            it = ksMap.find(answer);
+            ksMap.erase(it);
+        }
+    }
+}

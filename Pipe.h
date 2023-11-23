@@ -8,6 +8,7 @@ class Pipe
 {
 public:
     void pipeInput();
+    void deletePipe();
     void findTubes();
     void PipeEdit();
     Pipe();

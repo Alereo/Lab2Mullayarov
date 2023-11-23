@@ -75,7 +75,7 @@ void Pipe::findTubes() {
     int count = 0;
     std::cout << "1)Все трубы " << endl;
     std::cout << "2)Поиск по названию " << endl;
-    std::cout << "3)Поиск пstd::о работе " << endl;
+    std::cout << "3)Поиск по работе " << endl;
     std::getline(cin, temp);
     try {
         answer = checkInt(temp);
@@ -262,6 +262,30 @@ void Pipe::PipeEdit() {
             std::cout << "Ошибка ввода :(" << endl;
             logfile << "Выбор несуществующего варианта при редактировании труб" << endl;
             break;
+        }
+    }
+}
+void Pipe::deletePipe(){
+    std::map<int, Pipe*>::iterator it;
+    std::cout << "Выберите трубы для удаления (id) :" << std::endl;
+    findTubes();
+    while (std::getline(cin, temp) && !temp.empty()) {
+        try {
+            answer = checkInt(temp);
+        }
+        catch (invalid_argument) {
+            std::cout << "Вводи число" << endl;
+            logfile << "Неверный формат при вводе id трубы для редактирования" << endl;
+            continue;
+        }
+        if (pipes.find(answer) == pipes.end()) {
+            std::cout << "Нет такого id" << endl;
+            logfile << "Ввод несуществующего id" << endl;
+            continue;
+        }
+        else {
+            it = pipes.find(answer);
+            pipes.erase(it);
         }
     }
 }
