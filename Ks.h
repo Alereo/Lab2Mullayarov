@@ -7,6 +7,9 @@ class Ks
 {
 public:
 	Ks();
+	void ksInput();
+	void KsEdit();
+	void findKs();
 	Ks(string name, int amountWorkshops, int amountWorhshopsNow);
 	void uptadeEff();
 	std::string name;

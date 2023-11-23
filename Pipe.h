@@ -7,6 +7,9 @@ using namespace std;
 class Pipe
 {
 public:
+    void pipeInput();
+    void findTubes();
+    void PipeEdit();
     Pipe();
     Pipe(string name, double len, int diam, bool isWorking);
     string kmMark;

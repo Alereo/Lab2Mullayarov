@@ -7,45 +7,47 @@
 #include "variables.h"
 #include "funcs.h"
 using namespace std;
+Pipe pipeManager;
+Ks ksManager;
 int main()
 {
     setlocale(LC_ALL, "ru");
     while (true) {
-        cout << "1)Добавить трубу\n";
-        cout << "2)Добавить КС\n";
-        cout << "3)Просмотр труб\n";
-        cout << "4)Просмотр Кс\n";
-        cout << "5)Редактирование Труб\n";
-        cout << "6)Редактирование КС\n";
-        cout << "7)Сохранить\n";
-        cout << "8)Загрузить\n";
-        cout << "0)Выход\n";
-        getline(cin, temp);
+        std::cout << "1)Добавить трубу\n";
+        std::cout << "2)Добавить КС\n";
+        std::cout << "3)Просмотр труб\n";
+        std::cout << "4)Просмотр Кс\n";
+        std:: cout << "5)Редактирование Труб\n";
+        std::cout << "6)Редактирование КС\n";
+        std::cout << "7)Сохранить\n";
+        std::cout << "8)Загрузить\n";
+        std::cout << "0)Выход\n";
+        std::getline(cin, temp);
         try {
             answer = checkInt(temp);
         }
         catch (invalid_argument) {
-            cout << ":(";
+            std::cout << ":(";
             continue;
         }
         switch (answer) {
         case 1:
-            pipeInput();
+            pipeManager.pipeInput();
             break;
         case 2:
-            ksInput();
+            ksManager.ksInput();
             break;
         case 3:
-            findTubes(pipes);
+            pipeManager.findTubes();
             break;
         case 4:
             findKs(ksMap);
             break;
         case 5:
-            PipeEdit(pipes);
+            pipeManager.PipeEdit();
             break;
         case 6:
-            KsEdit(ksMap);
+            ksManager.KsEdit();
             break;
         case 7:
             save();
@@ -55,7 +57,7 @@ int main()
             break;
         case 0:
             break;
-        default: cout << "Неверный ввод:(\n";
+        default: std::cout << "Неверный ввод:(\n";
             break;
         }
     }
