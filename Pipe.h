@@ -1,12 +1,17 @@
 #pragma once
 #include <string>
 #include <iostream>
-
 #include <fstream>
+#include <map>
+#include "variables.h"
 using namespace std;
+class Ks;
+extern std::map<int, Ks*> ksMap;
 class Pipe
 {
 public:
+    int idInit;
+    Ks* adjacentNode;
     void pipeInput();
     void deletePipe();
     void findTubes();

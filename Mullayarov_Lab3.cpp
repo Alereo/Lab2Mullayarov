@@ -6,8 +6,7 @@
 #include "Pipe.h"
 #include "funcs.h"
 using namespace std;
-Pipe pipeManager;
-Ks ksManager;
+extern std::map<int, Ks*> ksMap;
 int main()
 {
     setlocale(LC_ALL, "ru");
@@ -22,6 +21,7 @@ int main()
         std::cout << "8)Загрузить\n";
         std::cout << "9)Удаление труб\n";
         std::cout << "10)Удаление Кс\n";
+        std::cout << "11)Создание Сети\n";
         std::cout << "0)Выход\n";
         std::getline(cin, temp);
         try {
@@ -61,6 +61,12 @@ int main()
             break;
         case 10:
             ksManager.deleteKs();
+            break;
+        case 11:
+            addPipeToGraph();
+            break;
+        case 12:
+            topologicalSort();
             break;
         case 0:
             break;

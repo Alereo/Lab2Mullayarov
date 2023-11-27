@@ -1,7 +1,6 @@
 #include "Pipe.h"
 #include <string>
 #include "funcs.h"
-#include "variables.h"
 using namespace std;
 int Pipe::id = 0;
 Pipe::Pipe()
@@ -69,6 +68,7 @@ void Pipe::pipeInput() {
     }
     if (kmMark != " " && kmMark != "0" && len > 0 && diam > 0) {
         pipes.emplace(Pipe::id,new Pipe(kmMark, len, diam, isWorking));
+        pipes[id]->idInit = id;
     }
 }
 void Pipe::findTubes() {

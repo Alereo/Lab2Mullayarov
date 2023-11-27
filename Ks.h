@@ -2,11 +2,17 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <map>
+#include <set>
 using namespace std;
+class Pipe;
 class Ks
 {
 public:
+	int idInit;
 	Ks();
+	std::map<Ks*, Pipe*> parents;
+	std::set<Pipe*> tubes;
 	void ksInput();
 	void KsEdit();
 	void deleteKs();

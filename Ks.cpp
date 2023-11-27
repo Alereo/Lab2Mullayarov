@@ -1,10 +1,10 @@
 #include "Ks.h"
 #include <string>
 #include <map>
-#include "variables.h"
 #include "funcs.h"
 using namespace std;
 int Ks::id = 0;
+extern int answer;
 Ks::Ks()
 {
     amountWorkshops = amountWorkshopsNow = effectiveness = 0;
@@ -63,7 +63,7 @@ void Ks::ksInput() {
     }
     if ((amountWorkshops >= amountWorkshopsNow) && name != " " && name != "0" && amountWorkshops > 0) {
         ksMap.emplace(Ks::id, new Ks(name, amountWorkshops, amountWorkshopsNow));
-
+        ksMap[id]->idInit = id;
 
     }
 }
@@ -154,6 +154,7 @@ void Ks::findKs() {
     }
 }
 void Ks::KsEdit() {
+    int answer1;
     int count = 0;
     std::cout << "id สั " << endl;
     getline(cin, temp);

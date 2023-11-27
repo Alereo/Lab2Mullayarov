@@ -1,6 +1,9 @@
 #pragma once
 #include <string>
-#include "variables.h"
+
+#include "gasNetwork.h"
+#include "Ks.h"
+#include "Pipe.h"
 static int checkInt(std::string str) {
     if (str.find(".") != str.npos) {
         std::cout << "Ошибка ввода строки" << std::endl;
@@ -40,6 +43,7 @@ static int checkBool(std::string str) {
 static void save() {
     std::cout << "Введи имя файла" << std::endl;
     std::string fileName;
+    std::ofstream file;
     getline(std::cin, fileName);
     try {
         file.open(fileName);
@@ -70,6 +74,8 @@ static void save() {
 }
 static void load() {
     std::string kmMark;
+    std::ifstream file1;
+    std::string fileName;
     int len;
     double diam;
     bool isWorking;
@@ -97,6 +103,7 @@ static void load() {
                     isWorking = std::stoi(temp.substr(temp.find_first_of(':') + 2));
                     getline(file1, temp);
                     pipes.emplace(id,new Pipe(kmMark,len,diam,isWorking));
+                    pipes[id]->idInit = id;
                 }
                 if (temp == "Нет Ks") {
                     return;
@@ -114,6 +121,7 @@ static void load() {
                         eff = std::stoi(temp.substr(temp.find_first_of(':') + 1, temp.find_first_of('%')));
                         getline(file1, temp);
                         ksMap.emplace(id, new Ks(name, amountWorkshops, amountWorkshopsNow));
+                        ksMap[id]->idInit = id;
                     }
                 }
             }
@@ -135,6 +143,7 @@ static void load() {
                         eff = std::stoi(temp.substr(temp.find_first_of(':') + 1, temp.find_first_of('%')));
                         getline(file1, temp);
                         ksMap.emplace(id, new Ks(name, amountWorkshops, amountWorkshopsNow));
+                        ksMap[id]->idInit = id;
                     }
                 }
             }
@@ -143,4 +152,55 @@ static void load() {
     catch(std::exception& ex){
         logfile << "Исключение при работе с файлом " << &ex << std::endl;
     }
+}
+static void addPipeToGraph() {
+    Pipe *pipe{};
+    int kses[2];
+    std::map<int, Ks*>::iterator it;
+    std::cout << "Введите id Кс" << std::endl;
+    for (int i = 0; i < 2; i++) {
+        std::getline(cin, temp);
+        try {
+            answer = checkInt(temp);
+        }
+        catch (invalid_argument) {
+            std::cout << "Вводи число" << endl;
+            logfile << "Неверный формат при вводе id Ks для редактирования" << endl;
+        }
+        if (ksMap.find(answer) == ksMap.end()) {
+            std::cout << "Нет такого id" << endl;
+            logfile << "Ввод несуществующего id" << endl;
+            return;
+        }
+        else {
+            kses[i] = answer;
+
+        }
+    }
+    std::cout << "Введите id трубы" << std::endl;
+    std::getline(cin, temp);
+    try {
+        answer = checkInt(temp);
+    }
+    catch (invalid_argument) {
+        std::cout << "Вводи число" << endl;
+        logfile << "Неверный формат при вводе id Ks для редактирования" << endl;
+    }
+    if (pipes.find(answer) == pipes.end()) {
+        std::cout << "Нет такого id" << endl;
+        logfile << "Ввод несуществующего id" << endl;
+        std::cout << "Создание трубы" << endl;
+        pipeManager.pipeInput();
+        addPipeToGraph();
+    }
+    else {
+         pipe = pipes[answer];
+    }
+    if (kses[0] != kses[1]) {
+        network.generateGraph(kses[0], kses[1], pipe);
+    }
+}
+static void topologicalSort() {
+    network.cout();
+    gasNetwork::DFSWrap(network.graph);
 }
