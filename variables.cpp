@@ -11,6 +11,4 @@ std::map<int, Pipe*> pipes;
 std::map<int, Ks*> ksMap;
 std::ofstream logfile;
 std::string temp;
-Pipe pipeManager;
 gasNetwork network;
-Ks ksManager;

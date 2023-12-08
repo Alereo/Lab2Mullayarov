@@ -12,10 +12,10 @@ class Pipe
 public:
     int idInit;
     Ks* adjacentNode;
-    void pipeInput();
-    void deletePipe();
-    void findTubes();
-    void PipeEdit();
+    static void pipeInput();
+    static void deletePipe();
+    static void findTubes();
+    static void PipeEdit();
     Pipe();
     Pipe(string name, double len, int diam, bool isWorking);
     string kmMark;

@@ -22,6 +22,7 @@ int main()
         std::cout << "9)Удаление труб\n";
         std::cout << "10)Удаление Кс\n";
         std::cout << "11)Создание Сети\n";
+        std::cout << "12)Топологическая сортировка\n";
         std::cout << "0)Выход\n";
         std::getline(cin, temp);
         try {
@@ -33,22 +34,22 @@ int main()
         }
         switch (answer) {
         case 1:
-            pipeManager.pipeInput();
+            Pipe::pipeInput();
             break;
         case 2:
-            ksManager.ksInput();
+            Ks::ksInput();
             break;
         case 3:
-            pipeManager.findTubes();
+            Pipe:: findTubes();
             break;
         case 4:
-            ksManager.findKs();
+            Ks::findKs();
             break;
         case 5:
-            pipeManager.PipeEdit();
+            Pipe::PipeEdit();
             break;
         case 6:
-            ksManager.KsEdit();
+            Ks::KsEdit();
             break;
         case 7:
             save();
@@ -57,10 +58,10 @@ int main()
             load();
             break;
         case 9:
-            pipeManager.deletePipe();
+            Pipe::deletePipe();
             break;
         case 10:
-            ksManager.deleteKs();
+            Ks::deleteKs();
             break;
         case 11:
             addPipeToGraph();

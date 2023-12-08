@@ -13,10 +13,10 @@ public:
 	Ks();
 	std::map<Ks*, Pipe*> parents;
 	std::set<Pipe*> tubes;
-	void ksInput();
-	void KsEdit();
-	void deleteKs();
-	void findKs();
+	static void ksInput();
+	static void KsEdit();
+	static void deleteKs();
+	static void findKs();
 	Ks(string name, int amountWorkshops, int amountWorhshopsNow);
 	void uptadeEff();
 	std::string name;

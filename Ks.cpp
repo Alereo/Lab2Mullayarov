@@ -29,6 +29,10 @@ void Ks::cout(ofstream& file) {
         " оличество цехов в работе: " << amountWorkshopsNow << endl << "Ёффективность: " << effectiveness << "%" << endl;
 }
 void Ks::ksInput() {
+    std::string name;
+    int amountWorkshops;
+    int amountWorkshopsNow;
+    int effectiveness;
     std::cout << "¬ведите им€ кс\n";
     std::getline(cin, temp);
     if ((temp = checkStr(temp)) != "Error") {

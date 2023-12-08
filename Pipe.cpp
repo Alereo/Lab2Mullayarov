@@ -24,6 +24,10 @@ void Pipe::cout(ofstream& file) {
         << "Диаметр: " << this->diam << endl << "Состояние работы трубы: " << isWorking << endl;
 }
 void Pipe::pipeInput() {
+    string kmMark;
+    int len;
+    double diam;
+    bool isWorking;
     int count = 0;
     std::cout << "Введите отметку в км\n";
     std::getline(cin, temp);

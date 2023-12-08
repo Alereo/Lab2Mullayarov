@@ -190,7 +190,7 @@ static void addPipeToGraph() {
         std::cout << "Нет такого id" << endl;
         logfile << "Ввод несуществующего id" << endl;
         std::cout << "Создание трубы" << endl;
-        pipeManager.pipeInput();
+        Pipe::pipeInput();
         addPipeToGraph();
     }
     else {
